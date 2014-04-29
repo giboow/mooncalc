@@ -1,6 +1,6 @@
 {
   "name" : "mooncalc",
-  "version" : "1.0.1",
+  "version" : "1.0.2",
   "author" : "Philippe Gibert",
   "description" :  "A tiny JavaScript library for calculating moon position, phases and zodiac sign",
   "homepage" : "https://github.com/giboow/mooncalc",
