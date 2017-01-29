@@ -9,8 +9,6 @@ Sources of the algorithm : http://www.abecedarical.com/zenosamples/zs_lunarphase
 (function () {
   'use strict';
 
-
-
   //normalize values to range 0...1
   function normalize(v) {
     v = v - Math.floor(v);
@@ -20,15 +18,14 @@ Sources of the algorithm : http://www.abecedarical.com/zenosamples/zs_lunarphase
     return v;
   }
 
-
-  function getMoonInformations(date) {
+  function MoonCalc (date) {
     var age, // Moon's age
       distance, // Moon's distance in earth radii
       latitude, // Moon's ecliptic latitude
       longitude, // Moon's ecliptic longitude
       phase, // Moon's phase
       trajectory, // Moon's trajectory
-      zodiac; // Moon's zodiac sign 
+      zodiac; // Moon's zodiac sign
 
     var yy, mm, k1, k2, k3, jd;
     var ip, dp, np, rp;
@@ -36,7 +33,7 @@ Sources of the algorithm : http://www.abecedarical.com/zenosamples/zs_lunarphase
     var year = date.getFullYear();
     var month = date.getMonth()+1;
     var day = date.getDate();
-
+    var dayRemain = (((date.getHours() * 60 + date.getMinutes()) * 60 + date.getSeconds()) * 1000 + date.getMilliseconds()) / (24*60*60*1000);
 
     yy = year - Math.floor((12 - month) / 10);
     mm = month + 9;
@@ -48,7 +45,7 @@ Sources of the algorithm : http://www.abecedarical.com/zenosamples/zs_lunarphase
     k2 = Math.floor(30.6 * mm + 0.5);
     k3 = Math.floor(Math.floor((yy / 100) + 49) * 0.75) - 38;
 
-    jd = k1 + k2 + day + 59;  // for dates in Julian calendar
+    jd = k1 + k2 + day + dayRemain + 59;  // for dates in Julian calendar
     if (jd > 2299160) {
       jd = jd - k3;      // for Gregorian calendar
     }
@@ -129,7 +126,6 @@ Sources of the algorithm : http://www.abecedarical.com/zenosamples/zs_lunarphase
     }
 
     return {
-      'date' : { 'year' : year, 'month' : month , 'day' : day},
       'age' : age,
       'distance' : distance * 6371,
       'ecliptic' : {
@@ -141,14 +137,6 @@ Sources of the algorithm : http://www.abecedarical.com/zenosamples/zs_lunarphase
       'constellation' : zodiac,
     };
   }
-
-
-
-  var MoonCalc = {};
-
-  MoonCalc.datasForDay = function (day) {
-    return getMoonInformations(day);
-  };
 
   // export as AMD module / Node module / browser variable
   if (typeof define === 'function' && define.amd) define(MoonCalc);

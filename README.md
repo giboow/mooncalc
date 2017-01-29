@@ -9,7 +9,7 @@ Sources of the algorithm : [http://www.abecedarical.com/zenosamples/zs_lunarphas
 ```js
 // get datas for current day :
 var date = new Date();
-var moonDatas = MoonCalc.datasForDay(date);
+var moonData = MoonCalc(date);
 ```
 
 ## Using in a server environment
