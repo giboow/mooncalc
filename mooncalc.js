@@ -101,31 +101,31 @@ Sources of the algorithm : http://www.abecedarical.com/zenosamples/zs_lunarphase
     longitude = 360 * rp + 6.3 * Math.sin(dp) + 1.3 * Math.sin(2 * ip - dp) + 0.7 * Math.sin(2 * ip);
 
     if (longitude <  33.18) {
-      zodiac = 'Pisces';
-    } else if (longitude <  51.16) {
       zodiac = 'Aries';
-    } else if (longitude <  93.44) {
+    } else if (longitude <  51.16) {
       zodiac = 'Taurus';
-    } else if (longitude < 119.48) {
+    } else if (longitude <  93.44) {
       zodiac = 'Gemini';
-    } else if (longitude < 135.30) {
+    } else if (longitude < 119.48) {
       zodiac = 'Cancer';
-    } else if (longitude < 173.34) {
+    } else if (longitude < 135.30) {
       zodiac = 'Leo';
-    } else if (longitude < 224.17) {
+    } else if (longitude < 173.34) {
       zodiac = 'Virgo';
-    } else if (longitude < 242.57) {
+    } else if (longitude < 224.17) {
       zodiac = 'Libra';
-    } else if (longitude < 271.26) {
+    } else if (longitude < 242.57) {
       zodiac = 'Scorpio';
-    } else if (longitude < 302.49) {
+    } else if (longitude < 271.26) {
       zodiac = 'Sagittarius';
-    } else if (longitude < 311.72) {
+    } else if (longitude < 302.49) {
       zodiac = 'Capricorn';
-    } else if (longitude < 348.58) {
+    } else if (longitude < 311.72) {
       zodiac = 'Aquarius';
-    } else {
+    } else if (longitude < 348.58) {
       zodiac = 'Pisces';
+    } else {
+      zodiac = 'Aries';
     }
 
     return {
